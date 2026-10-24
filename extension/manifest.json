@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "OpenCode Chrome",
+  "version": "0.8.0",
+  "minimum_chrome_version": "116",
+  "description": "自动配对本机 OpenCode，按任务连接网页，提供虚拟指针、高亮和人工接管。安装时允许访问所有普通网页。",
+  "permissions": ["activeTab", "tabs", "tabGroups", "webNavigation", "scripting", "storage", "debugger", "nativeMessaging", "alarms", "sidePanel"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "background": { "service_worker": "background-v2.js" },
+  "icons": { "16": "icons/opencode-16.png", "32": "icons/opencode-32.png", "48": "icons/opencode-48.png", "128": "icons/opencode-128.png" },
+  "side_panel": { "default_path": "sidepanel.html" },
+  "action": {
+    "default_title": "打开 OpenCode Chrome",
+    "default_icon": { "16": "icons/opencode-16.png", "32": "icons/opencode-32.png" }
+  }
+}

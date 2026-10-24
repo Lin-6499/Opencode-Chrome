@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenCode Chrome</title>
+  <link rel="stylesheet" href="workspace.css">
+</head>
+<body>
+  <header class="header">
+    <div class="brand"><img src="icons/opencode-32.png" width="25" height="25" alt=""><span>OpenCode Chrome</span></div>
+    <div class="header-actions"><button id="history-toggle" class="icon-button" title="历史会话" aria-label="历史会话">☰</button><button id="new-chat" class="icon-button" title="新建会话" aria-label="新建会话">＋</button><button id="menu-toggle" class="icon-button" title="更多" aria-label="更多会话操作" aria-expanded="false">⋯</button></div>
+  </header>
+  <div class="session-heading"><span id="session-title">新会话</span><span id="run-state" class="run-state">就绪</span></div>
+  <section id="control-menu" class="control-menu" hidden aria-label="更多会话操作">
+    <button id="rename-session" class="menu-item">重命名会话</button><button id="archive-session" class="menu-item">归档会话</button><button id="refresh-models" class="menu-item">刷新模型列表</button><button id="refresh-session" class="menu-item">刷新会话</button>
+    <div class="menu-divider"></div><div class="control-summary"><span id="control-connection">正在检查连接…</span><span id="control-task">暂无浏览器任务</span><span id="control-status"></span></div>
+    <div class="control-actions"><button id="takeover" class="danger">停止并接管</button><button id="resume" hidden>恢复自动控制</button><button id="reconnect">检查连接</button></div>
+  </section>
+  <div id="notice" class="notice" role="status" hidden></div>
+  <section id="history" class="history" hidden aria-label="历史会话"><div class="section-heading"><strong>此项目的最近会话</strong><button id="history-refresh" class="text-button">刷新</button></div><div id="session-list"></div></section>
+  <main id="chat-view" class="chat-view">
+    <div id="conversation" class="conversation" aria-live="polite" aria-label="会话消息">
+      <div id="welcome" class="welcome"><img src="icons/opencode-128.png" width="46" height="46" alt="OpenCode"><h1>开始一个任务</h1><p>使用本机 OpenCode 的模型、Agent 与工具</p><div class="suggestions"><button>读取当前页面结构</button><button>概括当前页面内容</button><button>查找页面的设置入口</button></div></div>
+    </div>
+    <div id="permissions" class="permissions" hidden></div>
+    <div id="forms" class="permissions" hidden></div>
+    <button id="jump-latest" class="jump-latest" hidden>↓ 回到最新消息</button>
+    <form id="composer" class="composer">
+      <label class="sr-only" for="prompt">向 OpenCode 发送消息</label>
+      <textarea id="prompt" rows="2" maxlength="16000" placeholder="发送消息… 输入 /models 选择模型"></textarea>
+      <div class="config-row"><button id="model-button" type="button" title="切换模型"><span id="model-label">选择模型</span><span>⌄</span></button><label class="sr-only" for="agent-select">Agent</label><select id="agent-select" aria-label="选择 Agent"><option value="">默认 Agent</option></select><label class="sr-only" for="variant-select">模型变体</label><select id="variant-select" aria-label="选择模型变体" hidden><option value="">默认强度</option></select></div>
+      <div class="composer-bottom"><label class="attach"><input id="attach-tab" type="checkbox" checked><span id="page-label">附带当前网页</span></label><button id="send" type="submit" title="发送" aria-label="发送消息">↑</button><button id="interrupt" type="button" title="停止生成" aria-label="停止生成" hidden>■</button></div>
+    </form>
+    <footer><span id="stream-label">本机 OpenCode</span><span id="usage-label" title="OpenCode 会话用量估算，非提供商账单"></span><span>Enter 发送 · Shift+Enter 换行</span></footer>
+  </main>
+  <dialog id="models-dialog" class="models-dialog" aria-label="选择模型"><div class="dialog-heading"><strong>选择模型</strong><button id="models-close" class="icon-button" aria-label="关闭模型选择">×</button></div><input id="model-search" type="search" placeholder="搜索模型或提供商…" autocomplete="off"><div id="models-list" class="models-list" role="listbox"></div><p class="muted small">与本项目桌面端使用同一模型目录。选择只影响当前会话。</p></dialog>
+  <dialog id="rename-dialog" aria-label="重命名会话"><h2>重命名会话</h2><form id="rename-form"><input id="rename-input" maxlength="100" required aria-label="会话名称"><div class="dialog-actions"><button id="rename-cancel" type="button">取消</button><button type="submit" class="primary">保存</button></div></form></dialog>
+  <dialog id="archive-dialog" aria-label="归档会话"><h2>归档此会话？</h2><p>会话将从最近列表隐藏，不会删除消息。</p><div class="dialog-actions"><button id="archive-cancel">取消</button><button id="archive-confirm" class="primary">归档</button></div></dialog>
+  <script type="module" src="workspace.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "opencode-chrome-control-lifecycle",
+  "version": "0.5.0",
+  "private": true,
+  "type": "module",
+  "exports": "./index.mjs"
+}

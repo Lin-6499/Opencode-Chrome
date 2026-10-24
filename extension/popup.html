@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>OpenCode Chrome</title>
+<style>
+body{width:320px;margin:0;padding:20px;background:#111827;color:#f9fafb;font:14px/1.6 system-ui}h2{margin:0 0 8px}p{color:#cbd5e1}label{display:block}input{box-sizing:border-box;width:100%;padding:10px;border:1px solid #475569;border-radius:8px;background:#1e293b;color:white;margin:6px 0 12px}button{padding:10px 14px;border:0;border-radius:8px;cursor:pointer;font-weight:600;margin:0 6px 8px 0}#connect{background:#a7f3d0}#stop{background:#fecaca}#status{white-space:pre-wrap;color:#a7f3d0}
+</style>
+<h2>OpenCode Chrome</h2>
+<p>安装时允许访问所有普通网页；之后自动配对本机，按任务自动连接，不再逐站授权，也不必手动连接标签页。</p>
+<button id="connect" hidden>恢复自动控制</button><button id="stop">停止并接管</button>
+<div id="status" role="status"></div>
+<p>首次调用默认选择 Chrome 当前活动页，之后固定目标。Chrome 内部页面不支持。调试横幅由 Chrome 显示，无法隐藏。停止后必须手动恢复。</p>
+<script src="popup.js"></script>
+</html>

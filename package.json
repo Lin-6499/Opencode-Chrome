@@ -1,0 +1,29 @@
+{
+  "name": "chrome-control-mcp",
+  "version": "0.8.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:ui": "node build-ui.mjs",
+    "pretest": "npm run build:ui",
+    "start": "node server.mjs",
+    "install-native": "node install-native.mjs",
+    "uninstall-native": "node install-native.mjs --uninstall",
+    "check": "node --check server.mjs && node --check native-host.mjs && node --check native-chat.mjs && node --check native-api.mjs && node --check native-stream.mjs && node --check native-forms.mjs && node --check install-native.mjs && node --check extension/background-v2.js && node --check extension/task-manager.js && node --check extension/group-manager.js && node --check extension/page-agent.js && node --check extension/frame-driver.js && node --check extension/action-driver.js && node --check extension/overlay.js && node --check extension/workspace.js && node --check bridge-client.mjs && node --check opencode-plugin/index.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@opencode/client": "2.1.3",
+    "@opencode/plugin": "2.1.3",
+    "dompurify": "^3.4.17",
+    "highlight.js": "^11.12.0",
+    "marked": "^18.1.1",
+    "ws": "^8.18.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "jsdom": "^30.1.3"
+  }
+}
